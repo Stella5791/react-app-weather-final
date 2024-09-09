@@ -1,10 +1,12 @@
 .Weather {
   max-width: 600px;
   margin: 0 auto;
-  margin-top: 20px;
   padding: 20px;
+  color: #475053;
   border-radius: 5px;
   box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2);
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
 
 .Weather .place {
