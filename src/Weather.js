@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import WeatherInfo from "./WeatherInfo";
+import WeatherForecast from "./WeatherForecast";
 import axios from "axios";
 import "./Weather.css";
 
@@ -9,7 +11,8 @@ export default function Weather(props) {
   function handleResponse(response) {
     setWeatherData({
       ready: true,
-      coordinates: response.data.main.temp,
+      coordinates: response.data.coord,
+      temperature: response.data.main.temp,
       humidity: response.data.main.humidity,
       date: new Date(response.data.dt * 1000),
       description: response.data.weather[0].description,
@@ -18,85 +21,51 @@ export default function Weather(props) {
       city: response.data.name,
     });
   }
+
   function handleSubmit(event) {
     event.preventDefault();
     search();
   }
+
   function handleCityChange(event) {
     setCity(event.target.value);
   }
+
   function search() {
-    const apiKey = "c8735bb7e8e2f8d8a38c7501f3cd47d3";
+    const apiKey = "2718952144ed077c12e7c160fb6fc351";
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
     axios.get(apiUrl).then(handleResponse);
   }
-  if (weatherData.ready){
-  return (
-    <div className="Weather ">
-      <form onSubmnit={handleSubmit}>
-        <div class="input-group mb-3">
-          <input
-            type="search"
-            placeholder="Enter a city"
-            className="form-control"
-            autofocus="on"
-            onChange={handleCityChange}
-            aria-describedby="button-addon2"
-          />
-          <button
-            className="btn btn-outline-secondary button"
-            type="submit"
-            value="search"
-          >
-            <strong>Search</strong>
-          </button>
-        </div>
-      </form>
-      <WeatherInfo data={weatherData}/>
-      <WeatherForecast coordinates={weatherData.coordinates}/>
-;
-    else{
-search ( );
-return "Loading...";
-    }
-    
-      
-      <hr />
-      <div className="overview">
-        <h1 className="place text-left">Cordoba</h1>
 
-        <div className="row overview-info">
-          <div className="col-6 current-temperature">
-            <div className=" d-flex temperature">
-              <img
-                src="https://ssl.gstatic.com/onebox/weather/64/cloudy.png"
-                alt="cloudy"
+  if (weatherData.ready) {
+    return (
+      <div className="Weather">
+        <form onSubmit={handleSubmit}>
+          <div className="row">
+            <div className="col-9">
+              <input
+                type="search"
+                placeholder="Enter a city.."
+                className="form-control"
+                autoFocus="on"
+                onChange={handleCityChange}
               />
-              <div className="d-flex">
-                <strong>xx</strong>
-                <span className="units">
-                  <a href="/">°C</a> | <a href="/">°F</a>
-                </span>
-              </div>
+            </div>
+            <div className="col-3">
+              <input
+                type="submit"
+                value="Search"
+                className="btn btn-primary w-100"
+              />
             </div>
           </div>
-          <div className="col-6 pb-3 info">
-            <p>
-              <div>Last updated: 4520</div>
-              <div>
-                <strong>
-                  {" "}
-                  <em>Cloudy</em>{" "}
-                </strong>
-              </div>
-              <div>Humidity:%</div>
-              <div>Wind: km/h</div>
-            </p>
-          </div>
-        </div>
+        </form>
+        <WeatherInfo data={weatherData} />
+        <WeatherForecast coordinates={weatherData.coordinates} />
       </div>
-      <hr />
-    </div>
-  );
-}
+    );
+  } else {
+    search();
+    return "Loading...";
+  }
 }
