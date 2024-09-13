@@ -8,7 +8,7 @@ export default function WeatherInfo(props) {
     <div className="WeatherInfo">
       <div className="overview">
         <h1 className="place text-left">{props.data.city}</h1>
-        <FormattedDate date={weatherData} />
+
         <div className="row overview-info">
           <div className="col-6 current-temperature">
             <div className=" d-flex temperature">
