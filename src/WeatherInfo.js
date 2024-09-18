@@ -1,45 +1,39 @@
 import React from "react";
 import FormattedDate from "./FormattedDate";
 import WeatherIcon from "./WeatherIcon";
+
 import WeatherTemperature from "./WeatherTemperature";
 
 export default function WeatherInfo(props) {
   return (
-    <div className="WeatherInfo">
-      <div className="overview">
-        <h1 className="place text-left">{props.data.city}</h1>
-
-        <div className="row overview-info">
-          <div className="col-6 current-temperature">
-            <div className=" d-flex temperature">
-              <div className="d-flex">
-                <span className="units">
-                  <WeatherTemperature celsius={props.data.temperature} />
-                </span>
-                <span>
-                  <WeatherIcon code={props.data.icon} size={52} />
-                </span>
-              </div>
-            </div>
+    <div>
+      <div className="row WeatherInfo overview">
+        <div className=" col-6 overview-info ">
+          {" "}
+          <h1 className="place text-left">{props.data.city}</h1>
+          <div className="date">
+            <FormattedDate date={props.data.date} />
           </div>
-          <div className="col-6 pb-3 info">
-            <p>
-              <div>
-                <FormattedDate date={props.data.date} />
-              </div>
-              <div>
-                <strong>
-                  {" "}
-                  <em>{props.data.description}</em>{" "}
-                </strong>
-              </div>
-              <div>Humidity: {props.data.humidity}%</div>
-              <div>Wind: {props.data.wind}km/h</div>
-            </p>
+        </div>
+        <div className="col-6">
+          <div className="d-flex">
+            <WeatherIcon code={props.data.icon} size={64} />
+            <WeatherTemperature celsius={props.data.temperature} />
           </div>
         </div>
       </div>
-      <hr />
+      <div className="row">
+        <ul>
+          <li>
+            <strong>
+              {" "}
+              <em>{props.data.description}</em>{" "}
+            </strong>
+          </li>
+          <li>Humidity: {props.data.humidity}%</li>
+          <li>Wind: {props.data.wind}km/h</li>
+        </ul>
+      </div>
     </div>
   );
 }

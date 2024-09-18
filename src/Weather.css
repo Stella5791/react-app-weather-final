@@ -11,28 +11,25 @@
 
 .Weather .place {
   padding: 10px;
-  padding-left: 40px;
   padding-top: 25px;
   text-transform: uppercase;
 }
-
-.Weather .temperature strong {
-  font-size: 54px;
+.Weather .WeatherInfo {
+  margin-left: 30px;
+}
+.WeatherInfo .overview-info .temperature {
+  font-size: 50px;
   line-height: 1;
   font-weight: 400;
-  margin-top: 20px;
 }
-
-.Weather .temperature .units {
+.WeatherTemperature .unit {
   position: relative;
   font-size: 16px;
-  margin-top: 20px;
 }
-
-.Weather .temperature .units a {
+.WeatherInfo .temperature .units a {
   text-decoration-line: none;
 }
 
-.Weather .temperature .units a:hover {
+.WeatherInfo .temperature .units a:hover {
   text-decoration: none;
 }
