@@ -37,12 +37,11 @@
 }
 .Weather .temperature {
   font-size: 70px;
-  margin-top: -6px;
 }
 .Weather .unit {
   position: relative;
   font-size: 25px;
-  margin-top: 12px;
+  margin-top: 10px;
 }
 .WeatherInfo .temperature .units a {
   text-decoration-line: none;
