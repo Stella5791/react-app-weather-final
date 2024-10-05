@@ -7,6 +7,7 @@ import WeatherTemperature from "./WeatherTemperature";
 export default function WeatherInfo(props) {
   return (
     <div className="top-container">
+      <hr />
       <div className="row WeatherInfo overview">
         <div className=" col-6 overview-info ">
           {" "}
@@ -25,7 +26,7 @@ export default function WeatherInfo(props) {
         </div>
         <div className="col-6 temperature-section">
           <div className="d-flex">
-            <div>
+            <div className="icon">
               <WeatherIcon code={props.data.icon} size={80} />
             </div>
             <div>
@@ -34,6 +35,7 @@ export default function WeatherInfo(props) {
           </div>
         </div>
       </div>
+      <hr />
     </div>
   );
 }

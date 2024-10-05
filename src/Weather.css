@@ -16,7 +16,6 @@
   margin-left: 15px;
 }
 .Weather .place {
-  padding-top: 25px;
   text-transform: uppercase;
 }
 
@@ -35,13 +34,18 @@
 .Weather .temperature-section {
   margin-top: 30px;
 }
+
+.Weather .icon {
+  margin-top: 15px;
+  margin-right: 5px;
+}
 .Weather .temperature {
   font-size: 70px;
 }
 .Weather .unit {
   position: relative;
   font-size: 25px;
-  margin-top: 10px;
+  margin-top: 18px;
 }
 .WeatherInfo .temperature .units a {
   text-decoration-line: none;
